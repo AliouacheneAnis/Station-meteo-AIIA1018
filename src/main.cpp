@@ -83,7 +83,7 @@ void loop()
   Serial.println(Rain); 
 
   // Formule trouvée par modélisation
-  double ProbablityRain= 0.03743225*h - 2.21389335*t - 0.09773871*k +198.85713381876218;
+  double ProbablityRain= 0.03743225*h - 2.21389335*t - 0.09773871*k +148.85713381876218;
 
   Serial.println(ProbablityRain); 
   //If-clauses - Alertes sur les LEDs Blue, Orange, Red 
@@ -102,10 +102,19 @@ void loop()
     Serial.println("color green"); 
   }
   
+  lcd.scrollDisplayLeft(); 
   lcd.setCursor(0,0);
-  lcd.print("Probablity of");
+  lcd.print("Tmp: ");
+  lcd.print(temp.temperature);
+  lcd.print(" C Hum: ");
+  lcd.print(humidity.relative_humidity);
+  lcd.print(" % sol: ");
+  lcd.print(k);
+  lcd.print(" LUX  Rain: ");
+  lcd.print(Rain);
+  lcd.print(" mm");
   lcd.setCursor(0,1);
-  lcd.print("Raining: ");
+  lcd.print("The Probablity of Rain is : ");
   lcd.print(ProbablityRain);
   lcd.print("%");
 
